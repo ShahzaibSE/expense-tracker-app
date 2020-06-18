@@ -1,8 +1,32 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {Button} from "@material-ui/core"
+import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles"
+import { purple } from '@material-ui/core/colors'
+// Getting context.
+import {globalContext} from "./../context/GlobalState"
+
+const theme = createMuiTheme({
+    palette: {
+      primary: purple,
+    },
+});
 
 export const AddTransactionComponent = () => {
-    const [text, setText] = React.useState("")
-    const [amount, setAmount] = React.useState(0)
+    const [text, setText] = React.useState()
+    const [amount, setAmount] = React.useState()
+    let {addTransaction} = useContext(globalContext)
+
+    // e for event.
+    const onSubmit = e => {
+        e.preventDefault()
+        let new_transaction = {
+            id: Math.floor(Math.random() * 100000000),
+            text,
+            amount: +amount
+        }
+        console.log(new_transaction)
+        addTransaction(new_transaction)
+    }
     return (
         <div>
             <h3>Add new transaction</h3>
@@ -18,8 +42,13 @@ export const AddTransactionComponent = () => {
                 <input type="number" value={amount} onChange={(e)=>{setAmount(e.target.value)}}
                  placeholder="Enter amount..." />
                 </div>
-                <button className="btn">Add transaction</button>
+                <br/>
+                {/* <button className="btn">Add transaction</button> */}
+                <ThemeProvider theme={theme}>
+                    <Button className="btn-custom-material" variant="contained" color="primary" onClick={onSubmit}>Add Transaction</Button>
+                </ThemeProvider>
             </form>
+            <br/>
         </div>
     )
 }
