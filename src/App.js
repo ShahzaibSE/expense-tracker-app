@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Grid} from "@material-ui/core"
+import {Grid,Card, makeStyles} from "@material-ui/core"
 
 // Components.
 import  HeaderComponent from "./components/HeaderComponent"
@@ -12,10 +12,31 @@ import {AddTransactionComponent} from "./components/AddTransactionComponent"
 // Context.
 import { GlobalProvider } from "./context/GlobalState"
 
+const useStyles = makeStyles({
+  root: {
+    minWidth: 375,
+    paddingLeft: 15,
+    paddingRight:15
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
 function App() {
+  const classes = useStyles();
   return (
     <Grid container>
-      <Grid xs="12">
+      <Grid item xs={12} lg={12}>
+      <Card className={classes.root}> 
       <GlobalProvider>
         {/* <div className="App"> */}
           <HeaderComponent></HeaderComponent>
@@ -25,6 +46,7 @@ function App() {
           <AddTransactionComponent></AddTransactionComponent>
         {/* </div> */}
       </GlobalProvider>
+      </Card>
       </Grid>
     </Grid>
   );

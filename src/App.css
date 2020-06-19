@@ -161,3 +161,11 @@ input[type='number'] {
 .list li:hover .delete-btn {
   opacity: 1;
 }
+
+.header-container{
+    background-color: yellowgreen;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
