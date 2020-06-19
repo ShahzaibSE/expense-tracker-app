@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {globalState, globalContext} from "../context/GlobalState"
+import {globalContext} from "../context/GlobalState"
 import {Grid} from "@material-ui/core"
 // Component.
 import {TransactionComponent} from "./TransactionComponent"
