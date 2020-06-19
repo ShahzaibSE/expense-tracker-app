@@ -15,8 +15,8 @@ import { GlobalProvider } from "./context/GlobalState"
 const useStyles = makeStyles({
   root: {
     minWidth: 375,
-    paddingLeft: 15,
-    paddingRight:15
+    paddingLeft: 25,
+    paddingRight:25
   },
   bullet: {
     display: 'inline-block',
