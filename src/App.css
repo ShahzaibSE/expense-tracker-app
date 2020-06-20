@@ -64,6 +64,7 @@ h4 {
   margin: 5px 0;
 }
 
+
 .money.plus {
   color: #2ecc71;
 }
@@ -123,6 +124,12 @@ input[type='number'] {
   margin-bottom: 40px;
 }
 
+.materialList{
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
 .list li {
   background-color: #fff;
   box-shadow: var(--box-shadow);
@@ -130,12 +137,13 @@ input[type='number'] {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px;
+  /* padding: 10px; */
   margin: 10px 0;
 }
 
 .list li.plus {
   border-right: 5px solid #2ecc71;
+  /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(235,0,0,1)) */
 }
 
 .list li.minus {
