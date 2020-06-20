@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import {Button} from "@material-ui/core"
-import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles"
+import {Button, TextField} from "@material-ui/core"
+import {createMuiTheme, ThemeProvider, makeStyles} from "@material-ui/core/styles"
 import { purple } from '@material-ui/core/colors'
 // Getting context.
 import {globalContext} from "./../context/GlobalState"
@@ -11,11 +11,21 @@ const theme = createMuiTheme({
     },
 });
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(0.3),
+        marginBottom:15,
+        width: '100%'
+      },
+    },
+  }));
+
 export const AddTransactionComponent = () => {
     const [text, setText] = React.useState()
     const [amount, setAmount] = React.useState()
     let {addTransaction} = useContext(globalContext)
-
+    let classes = useStyles()
     // e for event.
     const onSubmit = e => {
         e.preventDefault()
@@ -29,19 +39,24 @@ export const AddTransactionComponent = () => {
     }
     return (
         <div>
-            <h3>Add new transaction</h3>
-            <form>
-                <div className="form-control">
-                <label htmlFor="text" style={{fontWeight:"bold"}}>Text</label>
+            <h3 style={{marginBottom:25}}>Add new transaction</h3>
+            <form className={classes.root}>
+                {/* <div className="form-control">
+                <label htmlFor="text">Text</label>
                 <input type="text" value={text} 
                        onChange={(e)=>{setText(e.target.value)}} placeholder="Enter text..." />
-                </div>
-                <div className="form-control">
-                <label htmlFor="amount" style={{fontWeight:"bold"}}>Amount <br />
+                </div> */}
+                <TextField label="Text" variant="outlined"
+                value={text} onChange={(e)=>{setText(e.target.value)}}></TextField><br/>
+                {/* <div className="form-control">
+                <label htmlFor="amount">Amount <br />
                     (negative - expense, positive - income)</label>
                 <input type="number" value={amount} onChange={(e)=>{setAmount(e.target.value)}}
                  placeholder="Enter amount..." />
-                </div>
+                </div> */}
+                <TextField label="Amount" variant="outlined" value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
+                </TextField>
+                <br/>
                 <br/>
                 {/* <button className="btn">Add transaction</button> */}
                 <ThemeProvider theme={theme}>

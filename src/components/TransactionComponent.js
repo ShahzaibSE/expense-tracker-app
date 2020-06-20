@@ -1,16 +1,23 @@
 import React, {useContext} from 'react'
 import {globalContext} from "../context/GlobalState"
-import {ListItem, Typography, ListItemText, ListItemSecondaryAction,
-        IconButton, makeStyles} from "@material-ui/core"
-import DeleteIcon from '@material-ui/icons/Delete';      
+import {ListItem, ListItemText, ListItemSecondaryAction,
+        IconButton} from "@material-ui/core"
+import DeleteIcon from '@material-ui/icons/Delete'
 
+const incomeTheme = {
+     background:'linear-gradient(45deg, #ccffcc 30%, #66ffcc 90%)'
+}
+
+const expenseTheme = {
+     background: 'linear-gradient(45deg,  #ff9966 30%, #ff6600 90%)'
+}
 
 export const TransactionComponent = ({transaction}) => {
     let sign = transaction.amount > 0 ? "+" : "-"
     const {deleteTransaction} = useContext(globalContext)
     //
     return (
-        <ListItem>
+        <ListItem style={transaction.amount < 0 ? expenseTheme : incomeTheme}>
             <ListItemText primary={transaction.text}
                           secondary= {`${sign}$${Math.abs(transaction.amount)}`}/>
                   <ListItemSecondaryAction>

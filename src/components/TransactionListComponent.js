@@ -21,13 +21,7 @@ export const TransactionListComponent = () => {
   let transactions = context.transactions
   // Material list generator.
   const [dense, setDense] = useState(true)
-  let generate = (element) => {
-    transactions.map((transaction) =>
-      (React.cloneElement(element, {
-        key: transaction,
-      })
-    ));
-  }
+  //
     return (
        <Grid container style={{display:"block"}}>
         <Grid item xs={12} lg={12}> 
