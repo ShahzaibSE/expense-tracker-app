@@ -35,7 +35,16 @@ export const AddTransactionComponent = () => {
             amount: +amount
         }
         console.log(new_transaction)
-        addTransaction(new_transaction)
+        if (document.getElementById("text_field").value && 
+        document.getElementById('amount_field').value) {
+            addTransaction(new_transaction)
+            setText('')
+            setAmount('')
+        }else {
+            console.log("Please provide text and amount.")
+        }
+        setText('')
+        setAmount('')
     }
     return (
         <div>
@@ -46,7 +55,7 @@ export const AddTransactionComponent = () => {
                 <input type="text" value={text} 
                        onChange={(e)=>{setText(e.target.value)}} placeholder="Enter text..." />
                 </div> */}
-                <TextField label="Text" variant="outlined"
+                <TextField id="text_field" label="Text" variant="outlined"
                 value={text} onChange={(e)=>{setText(e.target.value)}}></TextField><br/>
                 {/* <div className="form-control">
                 <label htmlFor="amount">Amount <br />
@@ -54,7 +63,7 @@ export const AddTransactionComponent = () => {
                 <input type="number" value={amount} onChange={(e)=>{setAmount(e.target.value)}}
                  placeholder="Enter amount..." />
                 </div> */}
-                <TextField label="Amount" variant="outlined" value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
+                <TextField id="amount_field" label="Amount" variant="outlined" value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
                 </TextField>
                 <br/>
                 <br/>
