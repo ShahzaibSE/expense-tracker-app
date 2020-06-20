@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {Button, TextField} from "@material-ui/core"
 import {createMuiTheme, ThemeProvider, makeStyles} from "@material-ui/core/styles"
 import { purple } from '@material-ui/core/colors'
+import Alert from "@material-ui/lab/Alert"
 // Getting context.
 import {globalContext} from "./../context/GlobalState"
 
@@ -26,6 +27,8 @@ export const AddTransactionComponent = () => {
     const [amount, setAmount] = React.useState()
     let {addTransaction} = useContext(globalContext)
     let classes = useStyles()
+    let isText = true
+    let isAmount = true
     // e for event.
     const onSubmit = e => {
         e.preventDefault()
@@ -40,7 +43,15 @@ export const AddTransactionComponent = () => {
             addTransaction(new_transaction)
             setText('')
             setAmount('')
-        }else {
+        } else if(!text){
+            isText = false
+            
+        }else if (!amount) {
+            isAmount = false
+        }
+        else {
+            isText = false
+            isAmount = false
             console.log("Please provide text and amount.")
         }
         setText('')
